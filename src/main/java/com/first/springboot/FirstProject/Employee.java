@@ -17,7 +17,7 @@ public class Employee {
                                   // qualifier to tell which one should be used here
     Creator beanDependencyExample; // we'll not initialize it as it will be auto initialized by the spring boot
 
-    public void runExample() {
+    public void runExaple() {
         System.out.println(beanDependencyExample.create());
     }
 }
