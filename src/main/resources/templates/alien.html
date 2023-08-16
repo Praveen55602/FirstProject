@@ -3,8 +3,14 @@
   <head> </head>
 
   <body>
-    <p>Alien id is : <span th:text="${obj.aid}"></span></p>
+    <form action="/aliens/add">
+      alienID : <input type="text" name="aid" /><br />
+      alienName : <input type="text" name="alienName" /><br />
+      alienLanguage : <input type="text" name="lang" /><br />
+      <button type="submit">Add</button>
+    </form>
+    <!-- <p>Alien id is : <span th:text="${obj.aid}"></span></p>
     <p>Alien name is : <span th:text="${obj.alienName}"></span></p>
-    <p>Alien language is : <span th:text="${obj.lang}"></span></p>
+    <p>Alien language is : <span th:text="${obj.lang}"></span></p> -->
   </body>
 </html>

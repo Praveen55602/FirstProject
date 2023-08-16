@@ -4,7 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import com.first.springboot.FirstProject.Alien;
+
+import com.first.springboot.FirstProject.Model.Alien;
 
 @Controller // adding this tell springboot that this file should be used as controller
 public class HomeController {
