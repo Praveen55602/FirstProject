@@ -25,4 +25,8 @@ public class Alien {
     public void setLang(String lang) {
         this.lang = lang;
     }
+
+    public String toString() {
+        return String.format("[%s, %s, %s]", ((Integer) aid).toString(), alienName, lang);
+    }
 }

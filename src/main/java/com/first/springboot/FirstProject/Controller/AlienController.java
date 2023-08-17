@@ -1,9 +1,14 @@
 package com.first.springboot.FirstProject.Controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.first.springboot.FirstProject.Dao.AlienRepo;
@@ -34,6 +39,22 @@ public class AlienController {
         return mv;
     }
 
+    @RequestMapping("/getaliens")
+    @ResponseBody // as we are just returning response from this. This tag tell that I'll not go
+                  // to any view just return a response
+    public List<Alien> getAliens() {// now the all the aliens will be returned and the response will automatically
+                                    // get converted to json by spring boot using jackson-core
+        return repo.findAll();
+    }
+
+    @RequestMapping("/getaliens/{aid}")
+    @ResponseBody
+    // since findbyid may return null that's why here java forces us to return
+    // optional
+    public Optional<Alien> getAlienById(@PathVariable("aid") int aid) {
+        return repo.findById(aid);
+    }
+
     // there is no UI for update and delete just pass everything as request params
     @RequestMapping("/updatealien")
     public ModelAndView updateAlien(Alien alien) {
@@ -52,6 +73,14 @@ public class AlienController {
     @RequestMapping("/deletealien")
     public String removeAlien(@RequestParam(name = "aid") Integer aid) {
         repo.deleteById(aid);
+        return "alien";
+    }
+
+    @RequestMapping("/getbylang")
+    public String getByLang(@RequestParam(name = "lang") String lang) {
+        System.out.println(repo.findByLang(lang));
+        System.out.println(repo.findByAidGreaterThan(1));
+        System.out.println(repo.findByLangSorted("java"));
         return "alien";
     }
 
